@@ -207,8 +207,13 @@ public partial class PVPForm : Form
                 if (r != null && r.responseData != null && r.responseData.eid == 0)
                 {
                     string pvpdaylog = tools.helper.getPVPDetailDayWarresultstring(r.responseData as StartPVPWarResponse, form.get_cur_index());
+                    ShipGirlBot.GreenDam.GreenDamMessage.GreenDam_pvpdaylog = "请等待足够战斗时间再点确认....或点击取消SL-----------------------------------------------------------------------------------------------\r\n"+pvpdaylog;
+                    //DialogResult slret = MessageBox.Show("请等待足够战斗时间再点确认....或点击取消SL-----------------------------------------------------------------------------------------------\r\n" +
+                    //    pvpdaylog, "是否SL --  PVP日战战报... ---------------------------------------------------------------------------------------------", MessageBoxButtons.OKCancel);
+                    Form GreenDamMessageBox = new ShipGirlBot.GreenDam.GreenDamMessage();
+                    GreenDamMessageBox.ShowDialog();
                     DialogResult slret = MessageBox.Show("请等待足够战斗时间再点确认....或点击取消SL-----------------------------------------------------------------------------------------------\r\n" +
-                        pvpdaylog, "是否SL --  PVP日战战报... ---------------------------------------------------------------------------------------------", MessageBoxButtons.OKCancel);
+                    "在刚刚窗口的就是战斗log了", "是否SL --  PVP日战战报... ---------------------------------------------------------------------------------------------", MessageBoxButtons.OKCancel);
                     z.log(pvpdaylog);
                     if(slret == System.Windows.Forms.DialogResult.OK)
                     {
